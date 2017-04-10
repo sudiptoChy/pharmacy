@@ -178,7 +178,7 @@ footer a, footer a:link {
 <body>
   <div class="wrapper">
 
-  <form class="login" method="post" action="{{ route('dashboard') }}">
+  <form class="login" method="post" action="{{ route('auth') }}">
     <p class="title">Log in</p>
 
     <div class="messages">

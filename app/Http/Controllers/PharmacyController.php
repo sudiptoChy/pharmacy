@@ -15,7 +15,6 @@ class PharmacyController extends Controller
     {
     	$medicines = Medicines::with('category', 'supplier')->get();
 
-    	return view('dashboard')
-	    	->with('medicines', $medicines);
+    	return view('dashboard')->with('medicines', $medicines);
 	}
 }

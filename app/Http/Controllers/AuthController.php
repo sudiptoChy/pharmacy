@@ -20,7 +20,7 @@ class AuthController extends Controller
             'password' => $request->get('password')
         ])){
             $user = User::where('email', $request->email)->first();
-            return view('dashboard')->with('user', $user);
+            return redirect()->route('dashboard');
         }
         else
         {
