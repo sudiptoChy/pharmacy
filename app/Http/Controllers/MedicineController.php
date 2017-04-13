@@ -7,6 +7,7 @@ use App\Model\Categories;
 use App\Model\Medicines;
 use App\Model\Suppliers;
 use App\Model\Companies;
+use Session;
 
 class MedicineController extends Controller
 {
@@ -32,6 +33,8 @@ class MedicineController extends Controller
 
         $medicine->save();
 
+        Session:: flash('success', 'Medicine Stored Successfully!');
+
         return redirect()->route('medicine');
     }
 
@@ -56,6 +59,9 @@ class MedicineController extends Controller
         $medicine->total_quantity = $request->input('quantity');
 
         $medicine->save();
+
+        Session:: flash('success', 'Medicine Updated Successfully!');
+
         return redirect()->route('medicine');
     }
 
@@ -63,6 +69,8 @@ class MedicineController extends Controller
     {
         $medicine = Medicines::find($id);
         $medicine->delete();
+
+        Session:: flash('success', 'Medicine Deleted Successfully!');
 
         return redirect()->route('medicine');
     }

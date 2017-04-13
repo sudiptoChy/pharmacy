@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Companies;
+use Session;
 
 class CompaniesController extends Controller
 {
@@ -19,6 +20,8 @@ class CompaniesController extends Controller
     	$company = new Companies;
     	$company->name = $request->companyName;
     	$company->save();
+
+        Session:: flash('success', 'Company Created Successfully!');
 
     	return redirect()->route('companies');
     }
@@ -37,13 +40,7 @@ class CompaniesController extends Controller
 		$company->name = $request->input('companyName');
 		$company->save();
 
-		return redirect()->route('companies');
-	}
-
-	public function delete($id)
-	{
-		$company = Companies::find($id);
-		$company->delete();
+        Session:: flash('success', 'Company Updated Successfully!');
 
 		return redirect()->route('companies');
 	}

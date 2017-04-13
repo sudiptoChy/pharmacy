@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\Suppliers;
 use App\Model\Companies;
+use Session;
 
 class SuppliersController extends Controller
 {
@@ -27,6 +28,9 @@ class SuppliersController extends Controller
     	$supplier->company_id = $request->company_id;
 
     	$supplier->save();
+
+        Session:: flash('success', 'Supplier Created Successfully!');
+
     	return redirect()->route('suppliers');
     }
 
@@ -53,6 +57,8 @@ class SuppliersController extends Controller
 
     	$supplier->save();
 
+        Session:: flash('success', 'Supplier Updated Successfully!');
+
     	return redirect()->route('suppliers');
     }
 
@@ -60,6 +66,8 @@ class SuppliersController extends Controller
     {
     	$supplier = Suppliers::find($id);
     	$supplier->delete();
+
+        Session:: flash('success', 'Supplier Deleted Successfully!');
 
     	return redirect()->route('suppliers');
     }
