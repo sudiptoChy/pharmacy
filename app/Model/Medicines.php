@@ -15,4 +15,11 @@ class Medicines extends Model
     {
     	return $this->belongsTo('App\Model\Categories');
     }
+
+    public function salerecord()
+    {
+        return $this->hasMany('App\Model\Salerecord');
+    }
+
+   
 }

@@ -59,5 +59,7 @@ Route::post('/supplier/delete/{id}', ['uses' => 'SuppliersController@delete', 'a
 
 // New Sale
 
-Route::post('/newsale/sell', ['uses' => 'SaleController@sell', 'as' => 'newsale.sell']);
+Route::post('/newsale/insert', ['uses' => 'SaleController@insert', 'as' => 'newsale.insert']);
+Route::post('/newsale/clear', ['uses' => 'SaleController@clear', 'as' => 'newsale.clear']);
+Route::post('/newsale/save', ['uses' => 'SaleController@save', 'as' => 'newsale.save']);
 

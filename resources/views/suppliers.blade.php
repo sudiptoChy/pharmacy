@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', "| Supp ")
+@section('title', "| Supplier ")
 
 @section('content')
 

@@ -1,39 +1,86 @@
 @extends('main')
 
-@section('title', "| New Sale ")
+@section('title', "| new sale ")
 
 @section('content')
 
-@if (Session::has('message'))
-    <div class="alert alert-info">{{ Session::get('message') }}</div>
-@endif
+<div class="page-header"><h2 style="text-align: center; color: blue">Create a Sell</h2></div>
 
-<div class="page-header"><h2 style="text-align: center; color: blue">Create a sell</h2></div>
+	<form method="POST" action="{{ route('newsale.insert') }}">
 
-    <form method="POST" action="#">
-          <div class="form-group col-sm-4 col-md-offset-4">
-            <label for="example-text-input">Choose Medicine</label>
-            <select class="form-control" name="category_id">
-                
-                  <option name="category_id" value="">1</option>
-                  <option name="category_id" value="">2</option>
-                  <option name="category_id" value="">3</option>
-                  <option name="category_id" value="">4</option>
-                
-             </select>
-          </div>
+      <div class="form-group col-md-3 col-md-offset-3">
+			  <select class="form-control" name="medicine_id">
+              <option disabled selected value> Select a medicine </option>
+			  @foreach($medicines as $md)
+					    <option name="medicine_id" value="{{ $md->id }}">{{ $md->name }}</option>
+			  @endforeach
+			   </select>
+		   </div>
 
-          <div class="form-group col-sm-4 col-md-offset-4">
-            <label for="example-text-input">Choose Quantity</label>
-            <input type="text" class="form-control" name="quantity" placeholder="Quantity" required="true">
-          </div>
 
-          <div class="form-group col-md-2 col-md-offset-4">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <input type="submit" name="submit" value="Insert" class="btn btn-primary">
-          </div>
-      </form>
+       <div class="form-group col-md-3">
+		    <input type="text" class="form-control" name="quantity" placeholder="Quantity">
+		  </div>
 
- </div>
+
+		  <div class="form-group">
+		  	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+			<input type="submit" name="submit" value="Insert" class="btn btn-primary">
+		  </div>
+	</form>
+
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>Medicine Name</th>
+				<th>Quantity</th>
+				<th>Base Price</th>
+				<th>Total</th>
+			</tr>
+		</thead>
+
+		@foreach($salerecord as $sr)
+
+		<tr>
+			<td>
+				#
+			</td>
+
+			<td>
+				{{ $sr->medicine->name }}
+			</td>
+
+			<td>
+				{{ $sr->quantity }}
+			</td>
+
+			<td>
+				{{ $sr->medicine->base_price }}
+			</td>
+
+			<td>
+				{{ $sr->total_price }}
+			</td>
+
+		</tr>
+		@endforeach
+		
+	</table>
+
+	<div class="form-group col-md-5 col-md-offset-7 ">
+
+			<form method="POST" action="{{ route('newsale.save') }}" class="inline-block">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					<input type="submit" name="submit" value="Confirm Sale" class="btn btn-success">
+			</form>
+
+			<form method="POST" action="{{ route('newsale.clear') }}" class="inline-block">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					<input type="submit" name="submit" value="Clear sell record" class="btn btn-danger">
+			</form>
+	</div>
+
+</div>
 
 @endsection
