@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="page-header"><h2 style="text-align: center; color: blue">Company Information</h2></div>
+<div class="page-header"><h2 style="text-align: center; color: blue">Company Information Edit</h2></div>
 
 	<form method="POST" action="{{ route('company.update', $cmp->id) }}">
 		  <div class="form-group col-md-4 col-md-offset-4">
@@ -43,11 +43,6 @@
 		              <form method="POST" action="{{ route('company.edit', $company->id) }}" style="display: inline-block;">
 		              	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		                  <input type="submit" value="Update" role="button" class="btn btn-warning btn-xs">
-		              </form>
-		       
-		              <form method="POST" action="{{ route('company.delete', $company->id), $company->id }}" style="display: inline-block;">
-		              	<input type="hidden" name="_token" value="{{ csrf_token() }}">
-		                  <input type="submit" value="Delete" role="button" class="btn btn-danger btn-xs">
 		              </form>
 		        </div>
 	        </td>

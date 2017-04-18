@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="page-header"><h2 style="text-align: center; color: blue">All Stored Medicines</h2></div>
+<div class="page-header"><h2 style="text-align: center; color: blue"> Medicine Edit </h2></div>
 
 	<form method="POST" action="{{ route('medicine.update', $medicineId) }}">
 		  <div class="form-group col-xs-2">

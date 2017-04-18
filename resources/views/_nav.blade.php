@@ -19,6 +19,7 @@
       <li class="{{ Request::is('medicine') ? "active": "" }}"><a href="/medicine">Medicine</a></li>
       <li class="{{ Request::is('companies') ? "active": "" }}"><a href="/companies">Companies</a></li>
       <li class="{{ Request::is('suppliers') ? "active": "" }}"><a href="/suppliers">Suppliers</a></li>
+      <li class="{{ Request::is('categories') ? "active": "" }}"><a href="/categories">Categories</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">

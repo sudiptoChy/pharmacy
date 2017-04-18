@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="page-header"><h2 style="text-align: center; color: blue">Suppliers Information</h2></div>
+<div class="page-header"><h2 style="text-align: center; color: blue">Supplier Information Edit</h2></div>
 
 		<form method="POST" action="{{ route('supplier.update', $spID )}}">
 			<div class="form-group col-xs-2">
