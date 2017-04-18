@@ -20,8 +20,6 @@ class SaleController extends Controller
     }
 
     // Storing medicine prices taken by user to sell
-
-    public $medicineBasePrices = [];
     
     public function insert(Request $request)
     { 
@@ -78,17 +76,11 @@ class SaleController extends Controller
     public function save()
     {
         $salerecord = Salerecord::all();
+        $saleDashboard = Salerecord::with('medicine')->get();
 
         $totalMoney = 0;
         $totalMedicine = 0;
         $medicineTypes = [];
-
-        // Data for View
-
-        $takenMedicines = [];
-        $medicinePrices = [];
-        $medicineQuantities = [];
-        
 
         foreach($salerecord as $sr)
         {
@@ -107,7 +99,7 @@ class SaleController extends Controller
         Salerecord::truncate();
 
         return view('newsaleDashboard')
-                ->with(compact('data'));
+                ->with(compact('data', 'saleDashboard'));
     }
 
     public function clear()

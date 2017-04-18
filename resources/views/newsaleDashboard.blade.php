@@ -31,12 +31,16 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Article</td>
-            <td><a href="#">Title of your article here</a></td>
-            <td class="text-right">-</td>
-            <td class="text-right">$200.00</td>
-          </tr>
+
+          @foreach($saleDashboard as $sd)
+            <tr>
+              <td> {{ $sd->medicine->name }} </td>
+              <td> {{ $sd->quantity }} </td>
+              <td> ${{ $sd->medicine->base_price }} </td>
+              <td> ${{ $sd->total_price }} </td>
+            </tr>
+
+          @endforeach
          
         </tbody>
       </table>
@@ -52,9 +56,9 @@
         </div>
         <div class="col-xs-2">
           <strong>
-          $1200.00 <br>
+          ${{ $data['totalMoney'] }} <br>
           N/A <br>
-          $1200.00 <br>
+          ${{ $data['totalMoney'] }} <br>
           </strong>
         </div>
       </div>
