@@ -37,6 +37,7 @@
 				<th>Quantity</th>
 				<th>Base Price</th>
 				<th>Total</th>
+				<th>Action</th>
 			</tr>
 		</thead>
 
@@ -63,6 +64,15 @@
 				{{ $sr->total_price }}
 			</td>
 
+			<td>
+		  		<div>
+		              <form method="POST" action="{{ route('newsale.delete', $sr->id) }}" style="display: inline-block;">
+		              	<input type="hidden" name="_token" value="{{ csrf_token() }}">
+		                  <input type="submit" value="Delete" role="button" class="btn btn-danger btn-sm">
+		              </form>
+		        </div>
+	        </td>
+
 		</tr>
 		@endforeach
 		
@@ -70,12 +80,12 @@
 
 	<div class="form-group col-md-5 col-md-offset-7 ">
 
-			<form method="POST" action="{{ route('newsale.save') }}" class="inline-block">
+			<form method="POST" action="{{ route('newsale.save') }}" style="display: inline-block;">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<input type="submit" name="submit" value="Confirm Sale" class="btn btn-success">
 			</form>
 
-			<form method="POST" action="{{ route('newsale.clear') }}" class="inline-block">
+			<form method="POST" action="{{ route('newsale.clear') }}" style="display: inline-block;">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<input type="submit" name="submit" value="Clear sell record" class="btn btn-danger">
 			</form>

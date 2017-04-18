@@ -56,7 +56,7 @@ class MedicineController extends Controller
         $medicine->supplier_id = $request->input('supplier_id');
         $medicine->name = $request->input('name');
         $medicine->base_price = $request->input('base_price');
-        $medicine->total_quantity = $request->input('quantity');
+        $medicine->total_quantity = $request->input('quantity'); 
 
         $medicine->save();
 

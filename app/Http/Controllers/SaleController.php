@@ -19,6 +19,10 @@ class SaleController extends Controller
                     ->with(compact('medicines', 'salerecord'));
     }
 
+    // Storing medicine prices taken by user to sell
+
+    public $medicineBasePrices = [];
+    
     public function insert(Request $request)
     { 
         $salerecord = new Salerecord;
@@ -47,6 +51,30 @@ class SaleController extends Controller
         return redirect()->route('newsale');
     }
 
+    public function delete($id)
+    {
+        $salerecord = Salerecord::find($id);
+
+        $salerecord->delete();
+
+        return redirect()->route('newsale');
+    }
+
+
+    // Updating medicine table after confirming sell
+
+    private function sell($medicine_id, $quantity)
+    {
+        $medicine = Medicines::find($medicine_id);
+        
+        $medicine->total_quantity = ($medicine->total_quantity - $quantity);
+        $medicine->sold = $medicine->sold+$quantity;
+
+        $medicine->save();
+    }
+
+    // Confirming Sell
+
     public function save()
     {
         $salerecord = Salerecord::all();
@@ -55,11 +83,19 @@ class SaleController extends Controller
         $totalMedicine = 0;
         $medicineTypes = [];
 
+        // Data for View
+
+        $takenMedicines = [];
+        $medicinePrices = [];
+        $medicineQuantities = [];
+        
+
         foreach($salerecord as $sr)
         {
             $totalMoney += $sr->total_price;
             $totalMedicine += $sr->quantity;
             $medicineTypes[$sr->medicine_id] = 0;
+            $this->sell($sr->medicine_id, $sr->quantity);
         }
 
         $data = [
