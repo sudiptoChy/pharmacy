@@ -93,7 +93,7 @@ class SaleController extends Controller
         $data = [
             'totalMoney' => $totalMoney,
             'totalMedicines' => $totalMedicine,
-            'medicineTypes' => count($medicineTypes),
+            'medicineTypes' => count($medicineTypes)
         ];
 
         Salerecord::truncate();

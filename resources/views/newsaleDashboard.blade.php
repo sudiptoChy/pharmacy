@@ -48,6 +48,8 @@
         <div class="col-xs-2 col-xs-offset-8">
           <p>
             <strong>
+            Total Medicines: <br>
+            Medicine Types: <br>
             Sub Total : <br>
             TAX : <br>
             Total : <br>
@@ -56,9 +58,11 @@
         </div>
         <div class="col-xs-2">
           <strong>
-          ${{ $data['totalMoney'] }} <br>
+          {{ $data['totalMedicines'] }} <br>
+          {{ $data['medicineTypes'] }} <br>
+          {{ $data['totalMoney'] }} <br>
           N/A <br>
-          ${{ $data['totalMoney'] }} <br>
+          {{ $data['totalMoney'] }} <br>
           </strong>
         </div>
       </div>
