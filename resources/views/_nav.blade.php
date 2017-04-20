@@ -28,10 +28,25 @@
           
           <li><a href="#">Account Setting</a></li>
           <li role="separator" class="divider"></li>
-          <li><a href="#">Log out</a></li>
+          <li><a id="logout" href="">Log out</a></li>
         </ul>
       </li>
     </ul>
   </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
   </nav>
+
+  <form id="frmlogout" method="POST" action="/logout">
+    {!! csrf_field() !!}
+  </form>
+
+  @push('scripts')
+    <script>
+      document
+      .getElementById('logout')
+      .addEventListener('click', function(e){
+        e.preventDefault();
+        document.getElementById('frmlogout').submit();
+      });
+    </script>
+  @endpush
