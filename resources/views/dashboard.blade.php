@@ -3,7 +3,9 @@
 @section('title', '| Dashboard')
 
 @section('content')
-	
+<!--akhyar -->
+<div class="page-header"><h1>DashBoard</h1></div><br><br>
+<!-- akhyar-->
 	<table class="table table-bordered table-hover">
 	  <thead>
 	    <tr>

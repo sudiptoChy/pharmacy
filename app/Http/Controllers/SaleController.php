@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Session;
 use App\Model\Medicines;
 use App\Model\Salerecord;
+use Illuminate\Contracts\Validation\Validator;
 
 class SaleController extends Controller
 {
@@ -23,6 +24,10 @@ class SaleController extends Controller
     
     public function insert(Request $request)
     { 
+        $this->validate($request, array(
+            'quantity' => 'required|numeric'
+       ));
+
         $salerecord = new Salerecord;
         
         $salerecord->medicine_id = $request->medicine_id;
