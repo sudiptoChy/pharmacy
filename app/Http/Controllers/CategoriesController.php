@@ -18,6 +18,9 @@ class CategoriesController extends Controller
 
    	public function create(Request $request)
     {
+      $this->validate($request,array(
+          'category_name' => 'required|alpha_num'
+      ));
     	$category = new Categories;
     	$category->name = $request->category_name;
     	$category->company_id = $request->company_id;
@@ -39,6 +42,9 @@ class CategoriesController extends Controller
 
 	public function update(Request $request, $id)
 	{
+      $this->validate($request,array(
+          'category_name' => 'required|alpha_num'
+      ));
 		$category = Categories::find($id);
 		$category->name = $request->input('category_name');
 		$category->company_id = $request->input('company_id');

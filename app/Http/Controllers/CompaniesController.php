@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\Companies;
 use Session;
+use Illuminate\Contracts\Validation\Validator;
 
 class CompaniesController extends Controller
 {
@@ -17,6 +18,9 @@ class CompaniesController extends Controller
 
     public function create(Request $request)
     {
+        $this->validate($request,array(
+            'name' =>'required'
+        ));
     	$company = new Companies;
     	$company->name = $request->companyName;
     	$company->save();
@@ -36,6 +40,9 @@ class CompaniesController extends Controller
 
 	public function update(Request $request, $id)
 	{
+        $this->validate($request,array(
+            'name' =>'required'
+        ));
 		$company = Companies::find($id);
 		$company->name = $request->input('companyName');
 		$company->save();

@@ -8,7 +8,7 @@
     <div class="container">
       <div class="row">
         <div>
-          <h1 style = "text-align: center">INVOICE REPORT</h1>
+          <h1 class="page-header">INVOICE REPORT</h1>
         </div>
       </div>
       <div class="row">

@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="page-header"><h2 style="text-align: center; color: blue">Suppliers Information</h2></div>
+<div class="page-header"><h1>Suppliers INFO</h1></div><br> <br>
 
 		<form method="POST" action="{{ route('supplier.create') }}">
 			<div class="form-group col-xs-2">
@@ -20,7 +20,8 @@
 		    	<input type="text" class="form-control" name="mobile" placeholder="Mobile">
 		  	</div>
 		  	<div class="form-group col-xs-2">
-			  <select class="form-control" name="company_id">
+			  <select class="form-control" name="company_id" required="ture">
+			  <option disabled selected value> Select a Company </option>
 				    @foreach($companies as $company)
 					    <option name="company_id" value="{{ $company->id }}">{{ $company->name }}</option>
 				    @endforeach

@@ -4,12 +4,12 @@
 
 @section('content')
 
-<div class="page-header"><h2 style="text-align: center; color: blue">Create a Sell</h2></div>
+<div class="page-header"><h1>Create A Sell</h1></div><br> <br>
 
 	<form method="POST" action="{{ route('newsale.insert') }}">
 
       <div class="form-group col-md-3 col-md-offset-3">
-			  <select class="form-control" name="medicine_id">
+			  <select class="form-control" name="medicine_id" required="true">
               <option disabled selected value> Select a medicine </option>
 			  @foreach($medicines as $md)
 					    <option name="medicine_id" value="{{ $md->id }}">{{ $md->name }}</option>

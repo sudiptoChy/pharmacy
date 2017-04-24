@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="page-header"><h2 style="text-align: center; color: blue">Categories</h2></div>
+<div class="page-header"><h1>Categories</h1></div><br> <br>
 
 	<form method="POST" action="{{ route('category.create') }}">
 		  <div class="form-group col-md-3 col-md-offset-3">
@@ -12,9 +12,10 @@
 		  </div>
 
 		  <div class="form-group col-xs-2">
-			  <select class="form-control" name="company_id">
+			  <select class="form-control" name="company_id" required="true">
+			   <option disabled selected value> Select a Company </option>
 				    @foreach($companies as $company)
-					    <option name="company_id" value="{{ $company->id }}">{{ $company->name }}</option>
+					    <option name="company_id" value="{{ $company->id }}" >{{ $company->name }}</option>
 				    @endforeach
 			   </select>
 		   </div>

@@ -4,15 +4,16 @@
 
 @section('content')
 
-<div class="page-header"><h2 style="text-align: center; color: blue">All Stored Medicines</h2></div>
+<div class="page-header"><h1>Medicines</h1></div><br> <br>
 
 	<form method="POST" action="{{ route('medicine.create') }}">
 		  <div class="form-group col-xs-2">
-		    <input type="text" class="form-control" name="name" placeholder="Medicine Name" required="true">
+		    <input type="text" class="form-control" name="name" placeholder="Medicine Name">
 		  </div>
 
 		  <div class="form-group col-xs-2">
-			  <select class="form-control" name="category_id">
+			  <select class="form-control" name="category_id" required="true">
+			  <option disabled selected value> Select a Category</option>
 				    @foreach($categories as $category)
 					    <option name="category_id" value="{{ $category->id }}">{{ $category->name }}</option>
 				    @endforeach
@@ -20,7 +21,8 @@
 		   </div>
 
 		   <div class="form-group col-xs-2">
-			  <select class="form-control" name="supplier_id">
+			  <select class="form-control" name="supplier_id" required="true">
+			  <option disabled selected value> Select a Supplier </option>
 				    @foreach($suppliers as $supplier)
 					    <option name="supplier_id" value="{{ $supplier->id }}"> {{ $supplier->first_name}}</option>
 				    @endforeach
@@ -28,12 +30,12 @@
 		   </div>
 
 		  <div class="form-group col-xs-2">
-		    <input type="text" class="form-control" name="quantity" placeholder="Quantity" required="true">
+		    <input type="text" class="form-control" name="quantity" placeholder="Quantity">
 		  </div>
 
 
 		  <div class="form-group col-xs-2">
-		    <input type="text" class="form-control" name="base_price" placeholder="Base Price" required="true">
+		    <input type="text" class="form-control" name="base_price" placeholder="Base Price">
 		  </div>
 
 

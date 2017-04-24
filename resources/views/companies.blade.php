@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="page-header"><h2 style="text-align: center; color: blue">Company Information</h2></div>
+<div class="page-header"><h1>Company Info</h1></div><br> <br>
 
 	<form method="POST" action="{{ route('company.create') }}">
 		  <div class="form-group col-md-4 col-md-offset-4">

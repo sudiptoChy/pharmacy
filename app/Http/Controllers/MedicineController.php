@@ -8,6 +8,7 @@ use App\Model\Medicines;
 use App\Model\Suppliers;
 use App\Model\Companies;
 use Session;
+use Illuminate\Contracts\Validation\Validator;
 
 class MedicineController extends Controller
 {
@@ -23,6 +24,11 @@ class MedicineController extends Controller
 
     public function create(Request $request)
     {
+        $this->validate($request, array(
+            'name' => 'required',
+            'quantity' => 'required|numeric',
+            'base_price' => 'required|numeric'
+       ));
         $medicine = new Medicines;
         $medicine->category_id = $request->category_id;
         $medicine->supplier_id = $request->supplier_id;
@@ -51,6 +57,11 @@ class MedicineController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->validate($request, array(
+            'name' => 'required',
+            'quantity' => 'required|numeric',
+            'base_price' => 'required|numeric'
+       ));
         $medicine = Medicines::find($id);
         $medicine->category_id = $request->input('category_id');
         $medicine->supplier_id = $request->input('supplier_id');

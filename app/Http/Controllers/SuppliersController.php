@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Model\Suppliers;
 use App\Model\Companies;
 use Session;
+use Illuminate\Contracts\Validation\Validator;
 
 class SuppliersController extends Controller
 {
@@ -20,6 +21,12 @@ class SuppliersController extends Controller
 
     public function create(Request $request)
     {
+        $this->validate($request,array(
+            'first_name' => 'required|alpha',
+            'last_name' => 'required|alpha',
+            'email' => 'required|email',
+            'mobile' => 'required|numeric'
+        ));
     	$supplier = new Suppliers;
     	$supplier->first_name = $request->first_name;
     	$supplier->last_name = $request->last_name;
@@ -36,6 +43,7 @@ class SuppliersController extends Controller
 
     public function edit($id)
     {
+
     	$spID = $id;
     	$sp = Suppliers::with('company')->find($id);
     	$suppliers = Suppliers::with('company')->get();
@@ -48,6 +56,12 @@ class SuppliersController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->validate($request,array(
+            'first_name' => 'required|alpha',
+            'last_name' => 'required|alpha',
+            'email' => 'required|email',
+            'mobile' => 'required|numeric'
+        ));
     	$supplier = Suppliers::find($id);
     	$supplier->first_name = $request->input('first_name');
     	$supplier->last_name = $request->input('last_name');
