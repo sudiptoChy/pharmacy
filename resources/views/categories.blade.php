@@ -51,13 +51,16 @@
 	  		<td>
 	  			{{ date('M j, Y', strtotime($category->updated_at)) }}
 	  		</td>
-
 	  		<td>
 		  		<div>
-		              <form method="GET" action="{{ route('category.edit', $category->id )}}" style="display: inline-block;">
-		              	<input type="hidden" name="_token" value="{{ csrf_token() }}">
-		                  <input type="submit" value="Update" role="button" class="btn btn-warning btn-xs">
-		              </form>
+					<form method="GET" action="{{ route('category.edit', $category->id )}}" style="display: inline-block;">
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					    <input type="submit" value="Update" role="button" class="btn btn-warning btn-sm">
+					</form>
+					<form method="POST" action="#" style="display: inline-block;">
+					    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+					    <input type="submit" value="Delete" role="button" class="btn btn-danger btn-sm">
+					</form>
 		        </div>
 	        </td>
 	  	</tr>
