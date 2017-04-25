@@ -88,7 +88,6 @@
 		              <input type="hidden" name="_token" value="{{ csrf_token() }}">
 		                  <input type="submit" value="Update" role="button" class="btn btn-warning btn-xs">
 		              </form>
-		       
 		              <form method="POST" action="{{ route('supplier.delete', $supplier->id) }}" style="display: inline-block;">
 		              <input type="hidden" name="_token" value="{{ csrf_token() }}">
 		                  <input type="submit" value="Delete" role="button" class="btn btn-danger btn-xs">
