@@ -23,7 +23,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Account <span class="caret"></span></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{ Auth::user()->name }}<span class="caret"></span></a>
         <ul class="dropdown-menu">
           
           <li><a href="#">Account Setting</a></li>
@@ -36,7 +36,7 @@
   </div><!-- /.container-fluid -->
   </nav>
 
-  <form id="frmlogout" method="POST" action="/logout">
+  <form id="frmlogout" method="POST" action="{{ route('logout') }}">
     {!! csrf_field() !!}
   </form>
 
