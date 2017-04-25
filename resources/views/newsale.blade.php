@@ -28,7 +28,7 @@
 			<input type="submit" name="submit" value="Insert" class="btn btn-primary">
 		  </div>
 	</form>
-
+@if(count($salerecord))
 	<table class="table table-bordered table-hover">
 		<thead>
 			<tr>
@@ -92,5 +92,7 @@
 	</div>
 
 </div>
-
+@endif
+<br><br>
 @endsection
+<br><br>
