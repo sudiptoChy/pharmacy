@@ -22,8 +22,8 @@ class CreateSalerecordsTable extends Migration
 
 
             $table->foreign('medicine_id')
-                    ->references('id')
-                    ->on('medicines');
+                ->references('id')
+                ->on('medicines');
         });
     }
 
