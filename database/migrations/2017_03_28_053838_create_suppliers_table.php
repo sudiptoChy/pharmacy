@@ -24,7 +24,7 @@ class CreateSuppliersTable extends Migration
 
              $table->foreign('company_id')
                     ->references('id')
-                    ->on('companies');
+                    ->on('companies')->onDelete('cascade');
         });
     }
 

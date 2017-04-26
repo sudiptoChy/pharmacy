@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Companies;
+use App\Model\Categories;
+use App\Model\Medicines;
 use Session;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Database\Eloquent\Collection;
 
 class CompaniesController extends Controller
 {
@@ -51,4 +54,20 @@ class CompaniesController extends Controller
 
 		return redirect()->route('companies');
 	}
+
+    public function delete(Request $request, $id)
+    {
+        $company = Companies::find($id);
+        $categories = Categories::with('company')
+                 ->where('company_id', '=', $id)
+                 ->get();
+        foreach ($categories as $key => $value) {
+                $medicine = Medicines::with('category')->where('category_id', '=', $value->id )->delete();
+        }
+        $categories= Categories::with('company')
+                 ->where('company_id', '=', $id)
+                 ->delete();
+        $company->delete();
+        return redirect()->route('companies');
+    }
 }
