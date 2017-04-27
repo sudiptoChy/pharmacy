@@ -23,7 +23,7 @@ class CompaniesController extends Controller
     public function create(Request $request)
     {
         $this->validate($request,array(
-            'name' =>'required'
+            'companyName' =>'required'
         ));
     	$company = new Companies;
     	$company->name = $request->companyName;
