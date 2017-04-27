@@ -15,7 +15,7 @@
 			<input type="submit" name="submit" value="Insert" class="btn btn-primary">
 		  </div>
 	</form>
-
+@if(count($companies))
 	<table class="table table-bordered table-hover">
 		<thead>
 			<tr>
@@ -52,5 +52,5 @@
 	  	</tr>
 	  	@endforeach
 	</table>
-
+@endif
 @endsection

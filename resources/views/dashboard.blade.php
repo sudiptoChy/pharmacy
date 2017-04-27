@@ -6,6 +6,7 @@
 <!--akhyar -->
 <div class="page-header"><h1>DashBoard</h1></div><br><br>
 <!-- akhyar-->
+@if(count($medicines))
 	<table class="table table-bordered table-hover">
 	  <thead>
 	    <tr>
@@ -45,5 +46,9 @@
 	   
 	  </tbody>
 </table>
-
+@else 
+<div>
+<h4>You don't have any Medicine record..!!</h4>
+<br>
+</div>@endif
 @endsection
