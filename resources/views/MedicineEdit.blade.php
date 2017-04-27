@@ -14,6 +14,7 @@
 		  			</div>
 		  			<div class="form-group col-xs-2">
 			  			<select class="form-control" name="category_id">
+			  			<option disabled selected value> {{ $medicine_category}} </option>
 				    		@foreach($categories as $category)
 					    		<option name="category_id" value="{{ $category->id }}">{{ $category->name }}</option>
 				    		@endforeach
@@ -21,6 +22,7 @@
 		   			</div>
 		   			<div class="form-group col-xs-3">
 			  			<select class="form-control" name="supplier_id">
+			  			<option disabled selected value> {{ $medicine_supplier}} </option>
 				    		@foreach($suppliers as $supplier)
 					    		<option name="supplier_id" value="{{ $supplier->id }}"> {{ $supplier->first_name}}</option>
 				    		@endforeach

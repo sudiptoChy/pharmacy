@@ -18,11 +18,12 @@
 		  			<div class="form-group col-xs-3">
 		    			<input type="text" class="form-control" name="email" value="{{ $sp->email }}">
 		  			</div>
-		  			<div class="form-group col-xs-2">
+		  			<div class="form-group col-xs-3">
 		    			<input type="text" class="form-control" name="mobile" value="{{ $sp->mobile }}">
 		  			</div>
-		  			<div class="form-group col-xs-3">
+		  			<div class="form-group col-xs-2">
 			  			<select class="form-control" name="company_id">
+			  			<option disabled selected value> {{ $comp_name}} </option>
 				    		@foreach($companies as $company)
 					    	<option name="company_id" value="{{ $company->id }}">{{ $company->name }}</option>
 				    		@endforeach
