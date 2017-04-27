@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Model\Companies;
 use App\Model\Categories;
 use App\Model\Medicines;
+use App\Model\Suppliers;
 use Session;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Database\Eloquent\Collection;
@@ -59,15 +60,18 @@ class CompaniesController extends Controller
     {
         $company = Companies::find($id);
         $categories = Categories::with('company')
-                 ->where('company_id', '=', $id)
-                 ->get();
+                 -> where('company_id', '=', $id)
+                 -> get();
         foreach ($categories as $key => $value) {
                 $medicine = Medicines::with('category')->where('category_id', '=', $value->id )->delete();
         }
-        $categories= Categories::with('company')
-                 ->where('company_id', '=', $id)
-                 ->delete();
-        $company->delete();
-        return redirect()->route('companies');
+        $categories = Categories::with('company')
+                 -> where('company_id', '=', $id)
+                 -> delete();
+        $suppliers = Suppliers::with('company')
+                    -> where('company_id', '=', $id)
+                    -> delete();
+        $company -> delete();
+        return redirect()-> route('companies');
     }
 }

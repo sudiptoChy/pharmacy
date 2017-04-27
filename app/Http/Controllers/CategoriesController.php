@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\Categories;
 use App\Model\Companies;
+use App\Model\Medicines;
+
 use Session;
 
 class CategoriesController extends Controller
@@ -54,4 +56,13 @@ class CategoriesController extends Controller
 
 		return redirect()->route('categories');
 	}
+  public function delete(Request $request, $id)
+  {
+    $category = Categories::find($id);
+    $medicines = Medicines:: with('category')
+                -> where('category_id', '=', $id)
+                -> delete();
+    $category -> delete();
+    return redirect()-> route('categories');
+  }
 }
