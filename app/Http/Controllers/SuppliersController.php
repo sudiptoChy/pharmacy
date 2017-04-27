@@ -48,9 +48,9 @@ class SuppliersController extends Controller
     	$sp = Suppliers::with('company')->find($id);
     	$suppliers = Suppliers::with('company')->get();
     	$companies = Companies::all();
-
+        $comp_name = $sp->company->name;
     	return view('supplierEdit')
-	    	->with(compact('sp', 'spID', 'suppliers', 'companies'));
+	    	->with(compact('sp', 'spID', 'suppliers', 'companies', 'comp_name'));
 
     }
 
@@ -60,7 +60,8 @@ class SuppliersController extends Controller
             'first_name' => 'required|alpha',
             'last_name' => 'required|alpha',
             'email' => 'required|email',
-            'mobile' => 'required|numeric'
+            'mobile' => 'required|numeric',
+            'company_id' => 'required'
         ));
     	$supplier = Suppliers::find($id);
     	$supplier->first_name = $request->input('first_name');

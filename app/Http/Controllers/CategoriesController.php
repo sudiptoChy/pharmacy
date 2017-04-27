@@ -45,7 +45,8 @@ class CategoriesController extends Controller
 	public function update(Request $request, $id)
 	{
       $this->validate($request,array(
-          'category_name' => 'required|alpha_num'
+          'category_name' => 'required|alpha_num',
+          'company_id' => 'required'
       ));
 		$category = Categories::find($id);
 		$category->name = $request->input('category_name');

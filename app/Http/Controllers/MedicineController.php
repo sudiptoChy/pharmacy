@@ -50,9 +50,11 @@ class MedicineController extends Controller
         $categories = Categories::all();
         $suppliers = Suppliers::all();
         $md = Medicines::with('category', 'supplier')->find($medicineId);
+        $medicine_category=$md->category->name;
+        $medicine_supplier=$md->supplier->first_name;
         $medicines = Medicines::with('category', 'supplier')->get();
         return view('MedicineEdit')
-                ->with(compact('categories', 'suppliers', 'medicineId', 'md', 'medicines'));
+                ->with(compact('categories', 'suppliers', 'medicineId', 'md', 'medicines', 'medicine_category', 'medicine_supplier'));
     }
 
     public function update(Request $request, $id)
@@ -60,7 +62,9 @@ class MedicineController extends Controller
         $this->validate($request, array(
             'name' => 'required',
             'quantity' => 'required|numeric',
-            'base_price' => 'required|numeric'
+            'base_price' => 'required|numeric',
+            'category_id' => 'required',
+            'supplier_id' => 'required'
        ));
         $medicine = Medicines::find($id);
         $medicine->category_id = $request->input('category_id');
