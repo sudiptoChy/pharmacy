@@ -38,8 +38,8 @@ class CategoriesController extends Controller
    		$categories= Categories::all();
    		$companies = Companies::all();
    		$ct = Categories::find($id);
-
-   		return view('categoryEdit')->with(compact('categories', 'companies', 'ct'));
+      $comp_name = Companies::find($ct->id);
+   		return view('categoryEdit')->with(compact('categories', 'companies', 'ct', 'comp_name'));
 	}
 
 	public function update(Request $request, $id)
