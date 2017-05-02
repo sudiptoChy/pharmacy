@@ -29,15 +29,25 @@ class MedicineController extends Controller
             'quantity' => 'required|numeric',
             'base_price' => 'required|numeric'
        ));
-        $medicine = new Medicines;
-        $medicine->category_id = $request->category_id;
-        $medicine->supplier_id = $request->supplier_id;
-        $medicine->name = $request->name;
-        $medicine->base_price = $request->base_price;
-        $medicine->total_quantity = $request->quantity;
-        $medicine->sold = '0';
 
-        $medicine->save();
+        $medicineName = ucfirst(strtolower($request->name));
+        $medicine = new Medicines;
+        $medicineName = $medicine->where(['name' => $medicineName, 'category_id' => $request->category_id])->first();
+
+        if($medicineName){
+            $medicineName->total_quantity += $request->quantity;
+            $medicineName->base_price = $request->base_price;
+            $medicineName->save();
+        } else {
+            $medicine->category_id = $request->category_id;
+            $medicine->supplier_id = $request->supplier_id;
+            $medicine->name = $medicineName;
+            $medicine->base_price = $request->base_price;
+            $medicine->total_quantity = $request->quantity;
+            $medicine->sold = '0';
+
+            $medicine->save();
+        }
 
         Session:: flash('success', 'Medicine Stored Successfully!');
 
